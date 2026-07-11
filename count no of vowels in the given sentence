@@ -1,0 +1,16 @@
+# include<stdio.h>
+int main(){
+	char sentence[100];
+	int vowels=0;
+	int i,count=0;
+	printf("Enter the sentence:");
+	scanf("%[^\n]",sentence);
+	for(i=0;sentence[i]!='\0';i++){
+		char ch=sentence[i];
+		if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u'||ch=='A'||ch=='E'||ch=='I'||ch=='O'||ch=='U'){
+			count++;
+		}
+	}
+	printf("The number of vowels in the given sentence is: %d",count);
+	return 0;   
+}
