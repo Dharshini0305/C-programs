@@ -1,0 +1,18 @@
+# include<stdio.h>
+int main(){
+	char sentence[100];
+	char ch;
+	int i;
+	int count=0;
+	printf("Enter the sentence:");
+	scanf("%[^\n]",&sentence);
+	printf("Enter the character to be searched in the sentence:");
+	scanf(" %c",&ch);
+	for(i=0;sentence[i]!='\0';i++){
+		if(sentence[i]==ch){
+		count++;
+	}
+	}
+printf("Character %c occurs %d times \n",ch,count);
+return 0;
+}
