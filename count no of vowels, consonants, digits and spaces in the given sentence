@@ -1,0 +1,28 @@
+# include<stdio.h>
+int main(){
+	char sentence[100];
+	int vowels=0,consonants=0,digits=0,spaces=0;
+	int i;
+	printf("Enter the sentence:");
+	scanf("%[^\n]",sentence);
+	for(i=0;sentence[i]!='\0';i++){
+		char ch=sentence[i];
+		if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u'||ch=='A'||ch=='E'||ch=='I'||ch=='O'||ch=='U'){
+			vowels++;
+		}
+		else if(ch>='a' && ch<='z' || ch>='A' && ch<='z'){
+			consonants++;
+		}
+		else if(ch>='0' && ch<='9'){
+			digits++;
+		}
+		else if(ch==' '){
+			spaces++;
+		}
+		}
+	printf("The number of vowels in the given sentence is: %d\n",vowels);
+	printf("The number of consonats in the given sentence is: %d\n",consonants);
+	printf("The number of digits in the given sentence is: %d\n",digits);
+	printf("The number of spaces in the given sentence is: %d\n",spaces);
+	return 0;   
+}
