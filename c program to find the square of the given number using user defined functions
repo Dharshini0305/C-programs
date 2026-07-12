@@ -1,0 +1,11 @@
+# include<stdio.h>
+float square(float n){
+	return n*n;
+}
+int main(){
+	float num;
+	printf("Enter the number:");
+	scanf("%f",&num);
+	printf("The square value of the given number is: %f",square(num));
+	return 0;
+}
