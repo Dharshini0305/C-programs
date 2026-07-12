@@ -1,0 +1,17 @@
+# include<stdio.h>
+float calculatesi(float p,float r,int t){
+	return (p*r*t)/100.0;
+}
+int main(){
+	float p;
+	printf("Enter the value of p:");
+	scanf("%f",&p);
+	float r;
+	printf("Enter the value of r:");
+	scanf("%f",&r);
+	int t;
+	printf("Enter the value of t:");
+	scanf("%d",&t);
+	printf("The calculated simple interest = %f",calculatesi(p,r,t));
+	return 0;
+}
