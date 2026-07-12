@@ -1,0 +1,16 @@
+# include<stdio.h>
+int countdigits(int n){
+	int count=0;
+	while(n!=0){
+		n=n/10;
+		count++;
+	}
+	return count;
+}
+int main(){
+	int num;
+	printf("Enter the number:");
+	scanf("%d",&num);
+	printf("The number of digits in the given number is %d",countdigits(num));
+	return 0;
+}
