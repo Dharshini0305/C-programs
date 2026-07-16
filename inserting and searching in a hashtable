@@ -1,0 +1,30 @@
+#include <stdio.h>
+int main() {
+    int hashArray[10];
+    int i;
+    for (i = 0; i < 10; i++) {
+        hashArray[i] = -1;
+    }
+    int key1 = 14;
+    int index1 = key1 % 10; 
+    hashArray[index1] = key1;
+    int key2 = 27;
+    int index2 = key2 % 10; 
+    hashArray[index2] = key2; 
+    int target = 27;
+    int searchIndex = target % 10; 
+    if (hashArray[searchIndex] == target) {
+        printf("Found! %d is at index %d\n", target, searchIndex);
+    } else {
+        printf("Not Found!\n");
+    }
+    printf("Table content:\n");
+    for ( i = 0; i < 10; i++) {
+        if (hashArray[i] != -1) {
+            printf("Index [%d] contains: %d\n", i, hashArray[i]);
+        } else {
+            printf("Index [%d] contains: ~ (Empty)\n", i);
+        }
+    }
+    return 0;
+}
