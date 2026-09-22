@@ -1,0 +1,77 @@
+#include <stdlib.h>
+#include <stdbool.h>
+typedef struct Node {
+    int val;
+    struct Node* next;
+} Node;
+int longestConsecutive(int* nums, int numsSize) {
+    if (numsSize == 0) return 0;
+    int hash_size = numsSize * 2 + 1;
+    Node** table = (Node**)calloc(hash_size, sizeof(Node*));
+    for (int i = 0; i < numsSize; i++) {
+        int val = nums[i];
+        int hash = abs(val) % hash_size;    
+        Node* curr = table[hash];
+        bool duplicate = false;
+        while (curr) {
+            if (curr->val == val) {
+                duplicate = true;
+                break;
+            }
+            curr = curr->next;
+        }
+        if (!duplicate) {
+            Node* new_node = (Node*)malloc(sizeof(Node));
+            new_node->val = val;
+            new_node->next = table[hash];
+            table[hash] = new_node;
+        }
+    }
+    int max_len = 0;
+    for (int i = 0; i < numsSize; i++) {
+        int target = nums[i] - 1;
+        int hash = abs(target) % hash_size;
+        Node* curr = table[hash];
+        bool found_left = false;
+        while (curr) {
+            if (curr->val == target) {
+                found_left = true;
+                break;
+            }
+            curr = curr->next;
+        }
+        if (!found_left) {
+            int current_num = nums[i];
+            int current_len = 1;
+            while (1) {
+                int next_target = current_num + 1;
+                int next_hash = abs(next_target) % hash_size;
+                Node* next_curr = table[next_hash];
+                bool found_right = false; 
+                while (next_curr) {
+                    if (next_curr->val == next_target) {
+                        found_right = true;
+                        break;
+                    }
+                    next_curr = next_curr->next;
+                }
+                if (!found_right) break;
+                current_num++;
+                current_len++;
+            }
+            if (current_len > max_len) {
+                max_len = current_len;
+            }
+        }
+    }
+    for (int i = 0; i < hash_size; i++) {
+        Node* curr = table[i];
+        while (curr) {
+            Node* temp = curr;
+            curr = curr->next;
+            free(temp);
+        }
+    }
+    free(table);
+    return max_len;
+}
